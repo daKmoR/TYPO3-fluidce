@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'fluidce'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+			<label index="tx_fluidce_domain_model_page">Page</label>
+			<label index="tx_fluidce_domain_model_page.name">Name</label>
+			<label index="tx_fluidce_domain_model_page.navigation_title">Navigation Title</label>
+			<label index="tx_fluidce_domain_model_page.layout">Layout</label>
+			<label index="tx_fluidce_domain_model_page.hide_in_menu">Hide In Menu</label>
+			<label index="tx_fluidce_domain_model_page.parent">Parent</label>
+			<label index="tx_fluidce_domain_model_page.sub_pages">Sub Pages</label>
+			<label index="pages.tx_extbase_type.Tx_Fluidce_Page">Fluid Content Elements Page</label>
+			
+			<label index="tx_fluidce_domain_model_content">Content</label>
+			<label index="tx_fluidce_domain_model_content.name">Name</label>
+			<label index="tx_fluidce_domain_model_content.hidden">Hidden</label>
+			<label index="tx_fluidce_domain_model_content.page">Page</label>
+			<label index="tt_content.tx_extbase_type.Tx_Fluidce_Content">Fluid Content Elements Content</label>
+			
+			<label index="tx_fluidce_domain_model_text">Text</label>
+			<label index="tx_fluidce_domain_model_text.text">Text</label>
+			<label index="tt_content.tx_extbase_type.Tx_Fluidce_Text">Fluid Content Elements Text</label>
+			
+			<label index="tx_fluidce_domain_model_image">Image</label>
+			<label index="tx_fluidce_domain_model_image.image">Image</label>
+			<label index="tt_content.tx_extbase_type.Tx_Fluidce_Image">Fluid Content Elements Image</label>
+			
+			<label index="tx_fluidce_domain_model_textandimage">Text And Image</label>
+			<label index="tx_fluidce_domain_model_textandimage.text">Text</label>
+			<label index="tx_fluidce_domain_model_textandimage.image">Image</label>
+			<label index="tt_content.tx_extbase_type.Tx_Fluidce_TextAndImage">Fluid Content Elements TextAndImage</label>
+			
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table pages</description>
+		<type>CSH</type>
+		<csh_table>pages</csh_table>
+	</meta>
+	<data type="array">
+	<languageKey index="default" type="array">
+	   
+			<label index="name.description">name</label>
+			<label index="navigation_title.description">navigationTitle</label>
+			<label index="layout.description">layout</label>
+			<label index="hide_in_menu.description">hideInMenu</label>
+			<label index="parent.description">parent</label>
+			<label index="sub_pages.description">subPages</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,57 @@
+plugin.tx_fluidce {
+	view {
+		templateRootPath = EXT:fluidce/Resources/Private/Templates/
+		partialRootPath = EXT:fluidce/Resources/Private/Partials/
+		layoutRootPath = EXT:fluidce/Resources/Private/Layouts/
+	}
+	persistence {
+		storagePid =
+		classes {
+			Tx_Reposearch_Domain_Model_Page {
+				mapping {
+					tableName = pages
+					#recordType = Tx_Reposearch_Domain_Model_Page
+					columns {
+						nav_title.mapOnProperty = navigationTitle
+						title.mapOnProperty = name
+					}
+				}
+			}
+			Tx_Reposearch_Domain_Model_Content {
+				mapping {
+					tableName = tt_content
+					#recordType = Tx_Reposearch_Domain_Model_Content
+					columns {
+						header.mapOnProperty = name
+						bodytext.mapOnProperty = text
+						pid.mapOnProperty = page
+						colPos.mapOnProperty = colPos
+					}
+				}
+			}
+		}
+	}
+	features {
+		rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_fluidce._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-fluidce table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-fluidce table th {
+		font-weight:bold;
+	}
+
+	.tx-fluidce table td {
+		vertical-align:top;
+	}
+)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Fluid Content Elements extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_fluidce_domain_model_page">Page</label>
+			<label index="tx_fluidce_domain_model_page.name">name</label>
+			<label index="tx_fluidce_domain_model_page.navigation_title">navigationTitle</label>
+			<label index="tx_fluidce_domain_model_page.layout">layout</label>
+			<label index="tx_fluidce_domain_model_page.hide_in_menu">hideInMenu</label>
+			<label index="tx_fluidce_domain_model_page.parent">parent</label>
+			<label index="tx_fluidce_domain_model_page.sub_pages">subPages</label>
+			<label index="tx_fluidce_domain_model_content">Content</label>
+			<label index="tx_fluidce_domain_model_content.name">name</label>
+			<label index="tx_fluidce_domain_model_content.hidden">hidden</label>
+			<label index="tx_fluidce_domain_model_content.page">page</label>
+			<label index="tx_fluidce_domain_model_text">Text</label>
+			<label index="tx_fluidce_domain_model_text.text">text</label>
+			<label index="tx_fluidce_domain_model_image">Image</label>
+			<label index="tx_fluidce_domain_model_image.image">image</label>
+			<label index="tx_fluidce_domain_model_textandimage">TextAndImage</label>
+			<label index="tx_fluidce_domain_model_textandimage.text">text</label>
+			<label index="tx_fluidce_domain_model_textandimage.image">image</label>
+		</languageKey>
+	</data>
+</T3locallang>
