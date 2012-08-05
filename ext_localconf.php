@@ -7,8 +7,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Content',
 	array(
-		'Content' => 'list, show',
 		'Page' => 'list, show',
+		'Content' => 'list, show',
 	),
 	// non-cacheable actions
 	array(

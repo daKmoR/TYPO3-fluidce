@@ -12,7 +12,7 @@
 			<label index="tx_fluidce_domain_model_page.layout">layout</label>
 			<label index="tx_fluidce_domain_model_page.hide_in_menu">hideInMenu</label>
 			<label index="tx_fluidce_domain_model_page.parent">parent</label>
-			<label index="tx_fluidce_domain_model_page.sub_pages">subPages</label>
+			<label index="tx_fluidce_domain_model_page.sub_pages">children</label>
 			<label index="tx_fluidce_domain_model_page.contents">contents</label>
 			<label index="tx_fluidce_domain_model_content">Content</label>
 			<label index="tx_fluidce_domain_model_content.name">name</label>

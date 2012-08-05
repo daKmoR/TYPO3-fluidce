@@ -61,7 +61,7 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	/**
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page>
 	 */
-	protected $subPages;
+	protected $children;
 
 	/**
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Content>
@@ -71,7 +71,7 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	/**
 	 * __construct
 	 *
-	 * @return void
+	 * @return \Tx_Fluidce_Domain_Model_Page
 	 */
 	public function __construct() {
 		//Do not remove the next line: It would break the functionality
@@ -89,7 +89,7 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->subPages = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->children = new Tx_Extbase_Persistence_ObjectStorage();
 		$this->contents = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
@@ -173,7 +173,7 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	 * @return void
 	 */
 	public function addSubPage(Tx_Fluidce_Domain_Model_Page $subPage) {
-		$this->subPages->attach($subPage);
+		$this->children->attach($subPage);
 	}
 
 	/**
@@ -181,22 +181,22 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	 * @return void
 	 */
 	public function removeSubPage(Tx_Fluidce_Domain_Model_Page $subPageToRemove) {
-		$this->subPages->detach($subPageToRemove);
+		$this->children->detach($subPageToRemove);
 	}
 
 	/**
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $subPages
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $children
 	 */
-	public function getSubPages() {
-		return $this->subPages;
+	public function getChildren() {
+		return $this->children;
 	}
 
 	/**
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $subPages
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $children
 	 * @return void
 	 */
-	public function setSubPages(Tx_Extbase_Persistence_ObjectStorage $subPages) {
-		$this->subPages = $subPages;
+	public function setChildren(Tx_Extbase_Persistence_ObjectStorage $subPages) {
+		$this->children = $subPages;
 	}
 
 	/**

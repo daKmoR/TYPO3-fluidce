@@ -54,7 +54,7 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	 * @return string
 	 */
 	public function listAction() {
-		$contents = $this->contentRepository->findAll();
+		//$contents = $this->contentRepository->findAll();
 		$contents = $this->contentRepository->findByPidAndColPos(1, 1);
 		$this->view->assign('contents', $contents);
 	}

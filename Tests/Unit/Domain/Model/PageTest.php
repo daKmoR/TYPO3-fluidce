@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Thomas Allmer <thomas.allmer@webteam.at>, WEBTEAM GmbH
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -58,7 +58,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setNameForStringSetsName() { 
+	public function setNameForStringSetsName() {
 		$this->fixture->setName('Conceived at T3CON10');
 
 		$this->assertSame(
@@ -66,7 +66,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getName()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
@@ -75,7 +75,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setNavigationTitleForStringSetsNavigationTitle() { 
+	public function setNavigationTitleForStringSetsNavigationTitle() {
 		$this->fixture->setNavigationTitle('Conceived at T3CON10');
 
 		$this->assertSame(
@@ -83,11 +83,11 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getNavigationTitle()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
-	public function getLayoutReturnsInitialValueForInteger() { 
+	public function getLayoutReturnsInitialValueForInteger() {
 		$this->assertSame(
 			0,
 			$this->fixture->getLayout()
@@ -97,7 +97,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setLayoutForIntegerSetsLayout() { 
+	public function setLayoutForIntegerSetsLayout() {
 		$this->fixture->setLayout(12);
 
 		$this->assertSame(
@@ -105,11 +105,11 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getLayout()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
-	public function getHideInMenuReturnsInitialValueForInteger() { 
+	public function getHideInMenuReturnsInitialValueForInteger() {
 		$this->assertSame(
 			0,
 			$this->fixture->getHideInMenu()
@@ -119,7 +119,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setHideInMenuForIntegerSetsHideInMenu() { 
+	public function setHideInMenuForIntegerSetsHideInMenu() {
 		$this->fixture->setHideInMenu(12);
 
 		$this->assertSame(
@@ -127,11 +127,11 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getHideInMenu()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
-	public function getParentReturnsInitialValueForTx_Fluidce_Domain_Model_Page() { 
+	public function getParentReturnsInitialValueForTx_Fluidce_Domain_Model_Page() {
 		$this->assertEquals(
 			NULL,
 			$this->fixture->getParent()
@@ -141,7 +141,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setParentForTx_Fluidce_Domain_Model_PageSetsParent() { 
+	public function setParentForTx_Fluidce_Domain_Model_PageSetsParent() {
 		$dummyObject = new Tx_Fluidce_Domain_Model_Page();
 		$this->fixture->setParent($dummyObject);
 
@@ -150,33 +150,33 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getParent()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
-	public function getSubPagesReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Page() { 
+	public function getSubPagesReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Page() {
 		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
-			$this->fixture->getSubPages()
+			$this->fixture->getChildren()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setSubPagesForObjectStorageContainingTx_Fluidce_Domain_Model_PageSetsSubPages() { 
+	public function setSubPagesForObjectStorageContainingTx_Fluidce_Domain_Model_PageSetsSubPages() {
 		$subPage = new Tx_Fluidce_Domain_Model_Page();
 		$objectStorageHoldingExactlyOneSubPages = new Tx_Extbase_Persistence_ObjectStorage();
 		$objectStorageHoldingExactlyOneSubPages->attach($subPage);
-		$this->fixture->setSubPages($objectStorageHoldingExactlyOneSubPages);
+		$this->fixture->setChildren($objectStorageHoldingExactlyOneSubPages);
 
 		$this->assertSame(
 			$objectStorageHoldingExactlyOneSubPages,
-			$this->fixture->getSubPages()
+			$this->fixture->getChildren()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
@@ -188,7 +188,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 
 		$this->assertEquals(
 			$objectStorageHoldingExactlyOneSubPage,
-			$this->fixture->getSubPages()
+			$this->fixture->getChildren()
 		);
 	}
 
@@ -205,14 +205,14 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 
 		$this->assertEquals(
 			$localObjectStorage,
-			$this->fixture->getSubPages()
+			$this->fixture->getChildren()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
-	public function getContentsReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Content() { 
+	public function getContentsReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Content() {
 		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
@@ -223,7 +223,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function setContentsForObjectStorageContainingTx_Fluidce_Domain_Model_ContentSetsContents() { 
+	public function setContentsForObjectStorageContainingTx_Fluidce_Domain_Model_ContentSetsContents() {
 		$content = new Tx_Fluidce_Domain_Model_Content();
 		$objectStorageHoldingExactlyOneContents = new Tx_Extbase_Persistence_ObjectStorage();
 		$objectStorageHoldingExactlyOneContents->attach($content);
@@ -234,7 +234,7 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getContents()
 		);
 	}
-	
+
 	/**
 	 * @test
 	 */
@@ -266,6 +266,6 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 			$this->fixture->getContents()
 		);
 	}
-	
+
 }
 ?>

@@ -55,13 +55,6 @@ class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_Act
 	 */
 	public function listAction() {
 		$pages = $this->pageRepository->findAll();
-		foreach($pages as $page) {
-			$parent = $page->getParent();
-			if ($parent) {
-				$value = $page->getParent()->getName();
-				var_dump($value);
-			}
-		}
 		$this->view->assign('pages', $pages);
 	}
 

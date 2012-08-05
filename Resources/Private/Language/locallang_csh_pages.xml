@@ -7,13 +7,13 @@
 	</meta>
 	<data type="array">
 	<languageKey index="default" type="array">
-	   
+
 			<label index="name.description">name</label>
 			<label index="navigation_title.description">navigationTitle</label>
 			<label index="layout.description">layout</label>
 			<label index="hide_in_menu.description">hideInMenu</label>
 			<label index="parent.description">parent</label>
-			<label index="sub_pages.description">subPages</label>
+			<label index="sub_pages.description">children</label>
 			<label index="contents.description">contents</label>
 		</languageKey>
 	</data>
