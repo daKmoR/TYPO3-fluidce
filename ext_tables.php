@@ -11,6 +11,18 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Fluid Content Elements');
 
+/*
+$TCA['pages']['columns']['contents'] = array(
+	'exclude' => 0,
+	'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.name',
+	'config' => array(
+		'type' => 'input',
+		'size' => 30,
+		'eval' => 'trim'
+	),
+);
+
+/*
 $tmp_fluidce_columns = array(
 
 	'name' => array(
@@ -53,8 +65,35 @@ $tmp_fluidce_columns = array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.parent',
 		'config' => array(
+			'type' => 'select',
+			'foreign_table' => 'pages',
+			'minitems' => 0,
+			'maxitems' => 1,
+		),
+	),
+	'sub_pages' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.sub_pages',
+		'config' => array(
 			'type' => 'inline',
 			'foreign_table' => 'pages',
+			'foreign_field' => 'page1',
+			'maxitems'      => 9999,
+			'appearance' => array(
+				'collapseAll' => 0,
+				'levelLinksPosition' => 'top',
+				'showSynchronizationLink' => 1,
+				'showPossibleLocalizationRecords' => 1,
+				'showAllLocalizationLink' => 1
+			),
+		),
+	),
+	'contents' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.contents',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'tt_content',
 			'foreign_field' => 'page',
 			'maxitems'      => 9999,
 			'appearance' => array(
@@ -66,9 +105,19 @@ $tmp_fluidce_columns = array(
 			),
 		),
 	),
-	'sub_pages' => array(
+);
+
+$tmp_fluidce_columns['page1'] = array(
+	'config' => array(
+		'type' => 'passthrough',
+	)
+);
+
+
+$tmp_fluidce_columns = array(
+	'parent' => array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.sub_pages',
+		'label' => 'LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page.parent',
 		'config' => array(
 			'type' => 'select',
 			'foreign_table' => 'pages',
@@ -78,19 +127,16 @@ $tmp_fluidce_columns = array(
 	),
 );
 
-$tmp_fluidce_columns['page'] = array(
-	'config' => array(
-		'type' => 'passthrough',
-	)
-);
 
 t3lib_extMgm::addTCAcolumns('pages',$tmp_fluidce_columns);
 
+
 $TCA['pages']['columns'][$TCA['pages']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:pages.tx_extbase_type.Tx_Fluidce_Page','Tx_Fluidce_Page');
+
 
 $TCA['pages']['types']['Tx_Fluidce_Page']['showitem'] = $TCA['pages']['types']['1']['showitem'];
 $TCA['pages']['types']['Tx_Fluidce_Page']['showitem'] .= ',--div--;LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_page,';
-$TCA['pages']['types']['Tx_Fluidce_Page']['showitem'] .= 'name, navigation_title, layout, hide_in_menu, parent, sub_pages';
+$TCA['pages']['types']['Tx_Fluidce_Page']['showitem'] .= 'name, navigation_title, layout, hide_in_menu, parent, sub_pages, contents';
 
 $tmp_fluidce_columns = array(
 
@@ -122,6 +168,12 @@ $tmp_fluidce_columns = array(
 			'maxitems' => 1,
 		),
 	),
+);
+
+$tmp_fluidce_columns['page'] = array(
+	'config' => array(
+		'type' => 'passthrough',
+	)
 );
 
 t3lib_extMgm::addTCAcolumns('tt_content',$tmp_fluidce_columns);
@@ -236,4 +288,5 @@ $TCA['tt_content']['types']['Tx_Fluidce_TextAndImage']['showitem'] = $TCA['tt_co
 $TCA['tt_content']['types']['Tx_Fluidce_TextAndImage']['showitem'] .= ',--div--;LLL:EXT:fluidce/Resources/Private/Language/locallang_db.xml:tx_fluidce_domain_model_textandimage,';
 $TCA['tt_content']['types']['Tx_Fluidce_TextAndImage']['showitem'] .= 'text, image';
 
+*/
 ?>

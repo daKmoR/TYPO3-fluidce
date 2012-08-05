@@ -54,16 +54,19 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	protected $hideInMenu;
 
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page>
+	 * @var Tx_Fluidce_Domain_Model_Page
 	 */
 	protected $parent;
 
 	/**
-	 * subPages
-	 *
-	 * @var Tx_Fluidce_Domain_Model_Page
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page>
 	 */
 	protected $subPages;
+
+	/**
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Content>
+	 */
+	protected $contents;
 
 	/**
 	 * __construct
@@ -86,7 +89,8 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->parent = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->subPages = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->contents = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
 	/**
@@ -150,62 +154,80 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	}
 
 	/**
-	 * Adds a Page
-	 *
-	 * @param Tx_Fluidce_Domain_Model_Page $parent
-	 * @return void
-	 */
-	public function addParent(Tx_Fluidce_Domain_Model_Page $parent) {
-		$this->parent->attach($parent);
-	}
-
-	/**
-	 * Removes a Page
-	 *
-	 * @param Tx_Fluidce_Domain_Model_Page $parentToRemove The Page to be removed
-	 * @return void
-	 */
-	public function removeParent(Tx_Fluidce_Domain_Model_Page $parentToRemove) {
-		$this->parent->detach($parentToRemove);
-	}
-
-	/**
-	 * Returns the parent
-	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $parent
+	 * @return Tx_Fluidce_Domain_Model_Page $parent
 	 */
 	public function getParent() {
 		return $this->parent;
 	}
 
 	/**
-	 * Sets the parent
-	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $parent
+	 * @param Tx_Fluidce_Domain_Model_Page $parent
 	 * @return void
 	 */
-	public function setParent(Tx_Extbase_Persistence_ObjectStorage $parent) {
+	public function setParent(Tx_Fluidce_Domain_Model_Page $parent) {
 		$this->parent = $parent;
 	}
 
 	/**
-	 * Returns the subPages
-	 *
-	 * @return Tx_Fluidce_Domain_Model_Page $subPages
+	 * @param Tx_Fluidce_Domain_Model_Page $subPage
+	 * @return void
+	 */
+	public function addSubPage(Tx_Fluidce_Domain_Model_Page $subPage) {
+		$this->subPages->attach($subPage);
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Page $subPageToRemove The Page to be removed
+	 * @return void
+	 */
+	public function removeSubPage(Tx_Fluidce_Domain_Model_Page $subPageToRemove) {
+		$this->subPages->detach($subPageToRemove);
+	}
+
+	/**
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $subPages
 	 */
 	public function getSubPages() {
 		return $this->subPages;
 	}
 
 	/**
-	 * Sets the subPages
-	 *
-	 * @param Tx_Fluidce_Domain_Model_Page $subPages
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $subPages
 	 * @return void
 	 */
-	public function setSubPages(Tx_Fluidce_Domain_Model_Page $subPages) {
+	public function setSubPages(Tx_Extbase_Persistence_ObjectStorage $subPages) {
 		$this->subPages = $subPages;
 	}
 
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Content $content
+	 * @return void
+	 */
+	public function addContent(Tx_Fluidce_Domain_Model_Content $content) {
+		$this->contents->attach($content);
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Content $contentToRemove The Content to be removed
+	 * @return void
+	 */
+	public function removeContent(Tx_Fluidce_Domain_Model_Content $contentToRemove) {
+		$this->contents->detach($contentToRemove);
+	}
+
+	/**
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Content> $contents
+	 */
+	public function getContents() {
+		return $this->contents;
+	}
+
+	/**
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Content> $contents
+	 * @return void
+	 */
+	public function setContents(Tx_Extbase_Persistence_ObjectStorage $contents) {
+		$this->contents = $contents;
+	}
+
 }
-?>

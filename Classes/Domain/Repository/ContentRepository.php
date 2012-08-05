@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Thomas Allmer <thomas.allmer@webteam.at>, WEBTEAM GmbH
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,5 +33,22 @@
  */
 class Tx_Fluidce_Domain_Repository_ContentRepository extends Tx_Extbase_Persistence_Repository {
 
+	/**
+	 * @param $pid
+	 * @param $colPos
+	 * @return array|Tx_Extbase_Persistence_QueryResultInterface
+	 */
+	public function findByPidAndColPos($pid, $colPos) {
+		$query = $this->createQuery();
+		$constraints = array();
+
+		$constraints[] = $query->equals('pid', $pid);
+		$constraints[] = $query->equals('colPos', $colPos);
+
+		if (count($constraints) > 0) {
+			$query->matching($query->logicalAnd($constraints));
+		}
+		return $query->execute();
+	}
+
 }
-?>

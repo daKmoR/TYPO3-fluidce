@@ -14,6 +14,7 @@
 			<label index="hide_in_menu.description">hideInMenu</label>
 			<label index="parent.description">parent</label>
 			<label index="sub_pages.description">subPages</label>
+			<label index="contents.description">contents</label>
 		</languageKey>
 	</data>
 </T3locallang>

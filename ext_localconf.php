@@ -7,15 +7,13 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Content',
 	array(
-		'Page' => 'list,show',
-		'Content' => 'list,show',
-
+		'Content' => 'list, show',
+		'Page' => 'list, show',
 	),
 	// non-cacheable actions
 	array(
 		'Page' => '',
 		'Content' => '',
-
 	)
 );
 

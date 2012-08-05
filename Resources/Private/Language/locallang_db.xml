@@ -14,6 +14,7 @@
 			<label index="tx_fluidce_domain_model_page.hide_in_menu">Hide In Menu</label>
 			<label index="tx_fluidce_domain_model_page.parent">Parent</label>
 			<label index="tx_fluidce_domain_model_page.sub_pages">Sub Pages</label>
+			<label index="tx_fluidce_domain_model_page.contents">Contents</label>
 			<label index="pages.tx_extbase_type.Tx_Fluidce_Page">Fluid Content Elements Page</label>
 			
 			<label index="tx_fluidce_domain_model_content">Content</label>

@@ -131,81 +131,139 @@ class Tx_Fluidce_Domain_Model_PageTest extends Tx_Extbase_Tests_Unit_BaseTestCas
 	/**
 	 * @test
 	 */
-	public function getParentReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Page() { 
-		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
-		$this->assertEquals(
-			$newObjectStorage,
-			$this->fixture->getParent()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setParentForObjectStorageContainingTx_Fluidce_Domain_Model_PageSetsParent() { 
-		$parent = new Tx_Fluidce_Domain_Model_Page();
-		$objectStorageHoldingExactlyOneParent = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneParent->attach($parent);
-		$this->fixture->setParent($objectStorageHoldingExactlyOneParent);
-
-		$this->assertSame(
-			$objectStorageHoldingExactlyOneParent,
-			$this->fixture->getParent()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function addParentToObjectStorageHoldingParent() {
-		$parent = new Tx_Fluidce_Domain_Model_Page();
-		$objectStorageHoldingExactlyOneParent = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneParent->attach($parent);
-		$this->fixture->addParent($parent);
-
-		$this->assertEquals(
-			$objectStorageHoldingExactlyOneParent,
-			$this->fixture->getParent()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removeParentFromObjectStorageHoldingParent() {
-		$parent = new Tx_Fluidce_Domain_Model_Page();
-		$localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
-		$localObjectStorage->attach($parent);
-		$localObjectStorage->detach($parent);
-		$this->fixture->addParent($parent);
-		$this->fixture->removeParent($parent);
-
-		$this->assertEquals(
-			$localObjectStorage,
-			$this->fixture->getParent()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function getSubPagesReturnsInitialValueForTx_Fluidce_Domain_Model_Page() { 
+	public function getParentReturnsInitialValueForTx_Fluidce_Domain_Model_Page() { 
 		$this->assertEquals(
 			NULL,
-			$this->fixture->getSubPages()
+			$this->fixture->getParent()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setSubPagesForTx_Fluidce_Domain_Model_PageSetsSubPages() { 
+	public function setParentForTx_Fluidce_Domain_Model_PageSetsParent() { 
 		$dummyObject = new Tx_Fluidce_Domain_Model_Page();
-		$this->fixture->setSubPages($dummyObject);
+		$this->fixture->setParent($dummyObject);
 
 		$this->assertSame(
 			$dummyObject,
+			$this->fixture->getParent()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getSubPagesReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Page() { 
+		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
 			$this->fixture->getSubPages()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setSubPagesForObjectStorageContainingTx_Fluidce_Domain_Model_PageSetsSubPages() { 
+		$subPage = new Tx_Fluidce_Domain_Model_Page();
+		$objectStorageHoldingExactlyOneSubPages = new Tx_Extbase_Persistence_ObjectStorage();
+		$objectStorageHoldingExactlyOneSubPages->attach($subPage);
+		$this->fixture->setSubPages($objectStorageHoldingExactlyOneSubPages);
+
+		$this->assertSame(
+			$objectStorageHoldingExactlyOneSubPages,
+			$this->fixture->getSubPages()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function addSubPageToObjectStorageHoldingSubPages() {
+		$subPage = new Tx_Fluidce_Domain_Model_Page();
+		$objectStorageHoldingExactlyOneSubPage = new Tx_Extbase_Persistence_ObjectStorage();
+		$objectStorageHoldingExactlyOneSubPage->attach($subPage);
+		$this->fixture->addSubPage($subPage);
+
+		$this->assertEquals(
+			$objectStorageHoldingExactlyOneSubPage,
+			$this->fixture->getSubPages()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeSubPageFromObjectStorageHoldingSubPages() {
+		$subPage = new Tx_Fluidce_Domain_Model_Page();
+		$localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+		$localObjectStorage->attach($subPage);
+		$localObjectStorage->detach($subPage);
+		$this->fixture->addSubPage($subPage);
+		$this->fixture->removeSubPage($subPage);
+
+		$this->assertEquals(
+			$localObjectStorage,
+			$this->fixture->getSubPages()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getContentsReturnsInitialValueForObjectStorageContainingTx_Fluidce_Domain_Model_Content() { 
+		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
+			$this->fixture->getContents()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setContentsForObjectStorageContainingTx_Fluidce_Domain_Model_ContentSetsContents() { 
+		$content = new Tx_Fluidce_Domain_Model_Content();
+		$objectStorageHoldingExactlyOneContents = new Tx_Extbase_Persistence_ObjectStorage();
+		$objectStorageHoldingExactlyOneContents->attach($content);
+		$this->fixture->setContents($objectStorageHoldingExactlyOneContents);
+
+		$this->assertSame(
+			$objectStorageHoldingExactlyOneContents,
+			$this->fixture->getContents()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function addContentToObjectStorageHoldingContents() {
+		$content = new Tx_Fluidce_Domain_Model_Content();
+		$objectStorageHoldingExactlyOneContent = new Tx_Extbase_Persistence_ObjectStorage();
+		$objectStorageHoldingExactlyOneContent->attach($content);
+		$this->fixture->addContent($content);
+
+		$this->assertEquals(
+			$objectStorageHoldingExactlyOneContent,
+			$this->fixture->getContents()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeContentFromObjectStorageHoldingContents() {
+		$content = new Tx_Fluidce_Domain_Model_Content();
+		$localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+		$localObjectStorage->attach($content);
+		$localObjectStorage->detach($content);
+		$this->fixture->addContent($content);
+		$this->fixture->removeContent($content);
+
+		$this->assertEquals(
+			$localObjectStorage,
+			$this->fixture->getContents()
 		);
 	}
 	

@@ -5,22 +5,37 @@ plugin.tx_fluidce {
 		layoutRootPath = EXT:fluidce/Resources/Private/Layouts/
 	}
 	persistence {
+		updateReferenceIndex = 0
 		storagePid =
 		classes {
-			Tx_Reposearch_Domain_Model_Page {
+			Tx_Fluidce_Domain_Model_Page {
 				mapping {
 					tableName = pages
-					#recordType = Tx_Reposearch_Domain_Model_Page
+					#recordType = Tx_Fluidce_Page
+					#recordType = Tx_Fluidce_Domain_Model_Page
 					columns {
+						pid.mapOnProperty = parent
 						nav_title.mapOnProperty = navigationTitle
+						nav_hide.mapOnProperty = hideInMenu
 						title.mapOnProperty = name
 					}
 				}
 			}
-			Tx_Reposearch_Domain_Model_Content {
+			Tx_Fluidce_Domain_Model_Content {
 				mapping {
 					tableName = tt_content
-					#recordType = Tx_Reposearch_Domain_Model_Content
+					columns {
+						header.mapOnProperty = name
+						bodytext.mapOnProperty = text
+						pid.mapOnProperty = page
+						colPos.mapOnProperty = colPos
+					}
+				}
+			}
+			Tx_Fluidce_Domain_Model_Text {
+				mapping {
+					tableName = tt_content
+					recordType = text
 					columns {
 						header.mapOnProperty = name
 						bodytext.mapOnProperty = text
@@ -32,7 +47,7 @@ plugin.tx_fluidce {
 		}
 	}
 	features {
-		rewrittenPropertyMapper = 1
+		#rewrittenPropertyMapper = 1
 	}
 }
 
