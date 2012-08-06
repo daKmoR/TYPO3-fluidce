@@ -31,38 +31,6 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_ActionController {
-
-	/**
-	 * @var Tx_Fluidce_Domain_Repository_PageRepository
-	 */
-	protected $pageRepository;
-
-	/**
-	 * @param Tx_Fluidce_Domain_Repository_PageRepository $pageRepository
-	 * @return void
-	 */
-	public function injectPageRepository(Tx_Fluidce_Domain_Repository_PageRepository $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function listAction() {
-		$pages = $this->pageRepository->findAll();
-		$this->view->assign('pages', $pages);
-	}
-
-	/**
-	 * action show
-	 *
-	 * @param Tx_Fluidce_Domain_Model_Page $page
-	 * @return void
-	 */
-	public function showAction(Tx_Fluidce_Domain_Model_Page $page) {
-		$this->view->assign('page', $page);
-	}
+class Tx_Fluidce_Domain_Model_Plugin extends Tx_Fluidce_Domain_Model_Content {
 
 }
-?>

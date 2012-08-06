@@ -49,6 +49,11 @@ class Tx_Fluidce_Domain_Model_Content extends Tx_Extbase_DomainObject_AbstractEn
 	protected $page;
 
 	/**
+	 * @var integer
+	 */
+	protected $colPos;
+
+	/**
 	 * @return string $name
 	 */
 	public function getName() {
@@ -91,6 +96,20 @@ class Tx_Fluidce_Domain_Model_Content extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function setPage(Tx_Fluidce_Domain_Model_Page $page) {
 		$this->page = $page;
+	}
+
+	/**
+	 * @param int $colPos
+	 */
+	public function setColPos($colPos) {
+		$this->colPos = $colPos;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getColPos() {
+		return $this->colPos;
 	}
 
 }

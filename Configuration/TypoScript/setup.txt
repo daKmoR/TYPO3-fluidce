@@ -11,8 +11,6 @@ plugin.tx_fluidce {
 			Tx_Fluidce_Domain_Model_Page {
 				mapping {
 					tableName = pages
-					#recordType = Tx_Fluidce_Page
-					#recordType = Tx_Fluidce_Domain_Model_Page
 					columns {
 						pid.mapOnProperty = parent
 						nav_title.mapOnProperty = navigationTitle
@@ -26,10 +24,13 @@ plugin.tx_fluidce {
 					tableName = tt_content
 					columns {
 						header.mapOnProperty = name
-						bodytext.mapOnProperty = text
 						pid.mapOnProperty = page
 						colPos.mapOnProperty = colPos
 					}
+				}
+				subclasses {
+					Tx_Fluidce_Domain_Model_Text = Tx_Fluidce_Domain_Model_Text
+					Tx_Fluidce_Domain_Model_Plugin = Tx_Fluidce_Domain_Model_Plugin
 				}
 			}
 			Tx_Fluidce_Domain_Model_Text {
@@ -37,10 +38,16 @@ plugin.tx_fluidce {
 					tableName = tt_content
 					recordType = text
 					columns {
-						header.mapOnProperty = name
 						bodytext.mapOnProperty = text
-						pid.mapOnProperty = page
-						colPos.mapOnProperty = colPos
+					}
+				}
+			}
+			Tx_Fluidce_Domain_Model_Plugin {
+				mapping {
+					tableName = tt_content
+					recordType = list
+					columns {
+						bodytext.mapOnProperty = text
 					}
 				}
 			}

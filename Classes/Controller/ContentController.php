@@ -34,15 +34,24 @@
 class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
-	 * contentRepository
-	 *
+	 * @var Tx_Fluidce_Domain_Repository_PageRepository
+	 */
+	protected $pageRepository;
+
+	/**
+	 * @param Tx_Fluidce_Domain_Repository_PageRepository $pageRepository
+	 * @return void
+	 */
+	public function injectPageRepository(Tx_Fluidce_Domain_Repository_PageRepository $pageRepository) {
+		$this->pageRepository = $pageRepository;
+	}
+
+	/**
 	 * @var Tx_Fluidce_Domain_Repository_ContentRepository
 	 */
 	protected $contentRepository;
 
 	/**
-	 * injectContentRepository
-	 *
 	 * @param Tx_Fluidce_Domain_Repository_ContentRepository $contentRepository
 	 * @return void
 	 */
@@ -54,8 +63,12 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	 * @return string
 	 */
 	public function listAction() {
+		$currentUid = $GLOBALS['TSFE']->id;
+		$page = $this->pageRepository->findByUid($currentUid);
 		//$contents = $this->contentRepository->findAll();
-		$contents = $this->contentRepository->findByPidAndColPos(1, 1);
+		//$contents = $this->contentRepository->findByPidAndColPos($currentUid, 1);
+		$contents = $page->getContentsForColPos(1);
+		$this->view->assign('page', $page);
 		$this->view->assign('contents', $contents);
 	}
 

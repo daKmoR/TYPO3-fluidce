@@ -230,4 +230,23 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		$this->contents = $contents;
 	}
 
+	/**
+	 * @param null $colPos
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Content> $contents
+	 */
+	public function getContentsForColPos($colPos = NULL) {
+		if ($colPos >= 0) {
+			$contents = $this->getContents();
+			$colPosContents = array();
+			foreach($contents as $content) {
+				if ($content->getColPos() === $colPos) {
+					$colPosContents[] = $content;
+				}
+			}
+			return $colPosContents;
+		} else {
+			return $this->getContents();
+		}
+	}
+
 }
