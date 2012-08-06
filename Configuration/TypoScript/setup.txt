@@ -4,6 +4,10 @@ plugin.tx_fluidce {
 		partialRootPath = EXT:fluidce/Resources/Private/Partials/
 		layoutRootPath = EXT:fluidce/Resources/Private/Layouts/
 	}
+	settings {
+		Tx_Fluidce_Domain_Model_Text = typo3conf/ext/fluidce/Resources/Private/Templates/Text.html
+		Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/fluidce/Resources/Private/Templates/TextAndImage.html
+	}
 	persistence {
 		updateReferenceIndex = 0
 		storagePid =
@@ -30,6 +34,7 @@ plugin.tx_fluidce {
 				}
 				subclasses {
 					Tx_Fluidce_Domain_Model_Text = Tx_Fluidce_Domain_Model_Text
+					Tx_Fluidce_Domain_Model_TextAndImage = Tx_Fluidce_Domain_Model_TextAndImage
 					Tx_Fluidce_Domain_Model_Plugin = Tx_Fluidce_Domain_Model_Plugin
 				}
 			}
@@ -37,6 +42,15 @@ plugin.tx_fluidce {
 				mapping {
 					tableName = tt_content
 					recordType = text
+					columns {
+						bodytext.mapOnProperty = text
+					}
+				}
+			}
+			Tx_Fluidce_Domain_Model_TextAndImage {
+				mapping {
+					tableName = tt_content
+					recordType = textpic
 					columns {
 						bodytext.mapOnProperty = text
 					}
@@ -54,26 +68,6 @@ plugin.tx_fluidce {
 		}
 	}
 	features {
-		#rewrittenPropertyMapper = 1
+		rewrittenPropertyMapper = 1
 	}
 }
-
-plugin.tx_fluidce._CSS_DEFAULT_STYLE (
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-fluidce table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-fluidce table th {
-		font-weight:bold;
-	}
-
-	.tx-fluidce table td {
-		vertical-align:top;
-	}
-)

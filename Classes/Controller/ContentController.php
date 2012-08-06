@@ -69,7 +69,18 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 		//$contents = $this->contentRepository->findByPidAndColPos($currentUid, 1);
 		$contents = $page->getContentsForColPos(1);
 		$this->view->assign('page', $page);
-		$this->view->assign('contents', $contents);
+
+		$contentsString = '';
+		foreach ($contents as $content) {
+			if ($this->settings[get_class($content)]) {
+				$templatePathAndFilename = $this->settings[get_class($content)];
+				$this->view->setTemplatePathAndFilename($templatePathAndFilename);
+				$this->view->assign('content', $content);
+				$contentsString .= $this->view->render();
+			}
+		}
+
+		return $contentsString;
 	}
 
 	/**

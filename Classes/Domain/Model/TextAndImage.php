@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Thomas Allmer <thomas.allmer@webteam.at>, WEBTEAM GmbH
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -31,25 +31,19 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Fluidce_Domain_Model_Content {
 
 	/**
-	 * text
-	 *
 	 * @var string
 	 */
 	protected $text;
 
 	/**
-	 * image
-	 *
 	 * @var string
 	 */
 	protected $image;
 
 	/**
-	 * Returns the text
-	 *
 	 * @return string $text
 	 */
 	public function getText() {
@@ -57,8 +51,6 @@ class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Extbase_DomainObject_Abstr
 	}
 
 	/**
-	 * Sets the text
-	 *
 	 * @param string $text
 	 * @return void
 	 */
@@ -67,8 +59,6 @@ class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Extbase_DomainObject_Abstr
 	}
 
 	/**
-	 * Returns the image
-	 *
 	 * @return string $image
 	 */
 	public function getImage() {
@@ -76,8 +66,6 @@ class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Extbase_DomainObject_Abstr
 	}
 
 	/**
-	 * Sets the image
-	 *
 	 * @param string $image
 	 * @return void
 	 */
@@ -86,4 +74,3 @@ class Tx_Fluidce_Domain_Model_TextAndImage extends Tx_Extbase_DomainObject_Abstr
 	}
 
 }
-?>
