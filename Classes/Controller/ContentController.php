@@ -60,6 +60,19 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	}
 
 	/**
+	 * @var Tx_Fluidce_Domain_Repository_TextRepository
+	 */
+	protected $textRepository;
+
+	/**
+	 * @param Tx_Fluidce_Domain_Repository_TextRepository $textRepository
+	 * @return void
+	 */
+	public function injectTextRepository(Tx_Fluidce_Domain_Repository_TextRepository $textRepository) {
+		$this->textRepository = $textRepository;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function listAction() {
@@ -67,7 +80,7 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 		$page = $this->pageRepository->findByUid($currentUid);
 		//$contents = $this->contentRepository->findAll();
 		//$contents = $this->contentRepository->findByPidAndColPos($currentUid, 1);
-		$contents = $page->getContentsForColPos(1);
+		$contents = $this->settings['colPos'] >= 0 ? $page->getContentsForColPos(1) : $page->getContents();
 		$this->view->assign('page', $page);
 
 		$contentsString = '';
@@ -89,6 +102,24 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	 */
 	public function showAction(Tx_Fluidce_Domain_Model_Content $content) {
 		$this->view->assign('content', $content);
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Content $content
+	 * @return void
+	 */
+	public function updateAction(Tx_Fluidce_Domain_Model_Content $content) {
+		$this->contentRepository->update($content);
+		$this->redirect('list');
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Text $text
+	 * @return void
+	 */
+	public function updateTextAction(Tx_Fluidce_Domain_Model_Text $text) {
+		$this->textRepository->update($text);
+		$this->redirect('list');
 	}
 
 }

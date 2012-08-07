@@ -2,3 +2,8 @@
 <div>
 	{content.text}
 </div>
+
+<f:form name="text" action="updateText" object="{content}">
+	<f:form.textfield property="name" />
+	<f:form.textarea property="text" rows="3" cols="40" />
+</f:form>

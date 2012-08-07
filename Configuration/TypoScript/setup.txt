@@ -1,3 +1,11 @@
+lib.fluidce = USER
+lib.fluidce {
+	userFunc = tx_extbase_core_bootstrap->run
+	extensionName = Fluidce
+	pluginName = Content
+	controller = Content
+}
+
 plugin.tx_fluidce {
 	view {
 		templateRootPath = EXT:fluidce/Resources/Private/Templates/
@@ -5,6 +13,7 @@ plugin.tx_fluidce {
 		layoutRootPath = EXT:fluidce/Resources/Private/Layouts/
 	}
 	settings {
+		colPos =
 		Tx_Fluidce_Domain_Model_Text = typo3conf/ext/fluidce/Resources/Private/Templates/Text.html
 		Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/fluidce/Resources/Private/Templates/TextAndImage.html
 	}
@@ -68,6 +77,6 @@ plugin.tx_fluidce {
 		}
 	}
 	features {
-		rewrittenPropertyMapper = 1
+		#rewrittenPropertyMapper = 1
 	}
 }
