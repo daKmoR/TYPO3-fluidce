@@ -13,7 +13,7 @@ plugin.tx_fluidce {
 		layoutRootPath = EXT:fluidce/Resources/Private/Layouts/
 	}
 	settings {
-		colPos =
+		colPos = 0
 		Tx_Fluidce_Domain_Model_Text = typo3conf/ext/fluidce/Resources/Private/Templates/Text.html
 		Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/fluidce/Resources/Private/Templates/TextAndImage.html
 	}

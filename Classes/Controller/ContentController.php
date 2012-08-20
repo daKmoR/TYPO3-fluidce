@@ -78,9 +78,8 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	public function listAction() {
 		$currentUid = $GLOBALS['TSFE']->id;
 		$page = $this->pageRepository->findByUid($currentUid);
-		//$contents = $this->contentRepository->findAll();
-		//$contents = $this->contentRepository->findByPidAndColPos($currentUid, 1);
-		$contents = $this->settings['colPos'] >= 0 ? $page->getContentsForColPos(1) : $page->getContents();
+		$this->settings['colPos'] = intval($this->settings['colPos']);
+		$contents = $this->settings['colPos'] >= 0 ? $page->getContentsForColPos($this->settings['colPos']) : $page->getContents();
 		$this->view->assign('page', $page);
 
 		$contentsString = '';
@@ -92,7 +91,6 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 				$contentsString .= $this->view->render();
 			}
 		}
-
 		return $contentsString;
 	}
 
@@ -114,11 +112,39 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 	}
 
 	/**
+	 * @param array $contentUids
+	 */
+	public function	moveAction($contentUids) {
+		$content = $this->contentRepository->findByUid($contentUids['contentUid']);
+		$moveAfterContent = $this->contentRepository->findByUid($contentUids['moveAfterUid']);
+		$content->moveAfter($moveAfterContent);
+		$this->redirect('list');
+	}
+
+	/**
 	 * @param Tx_Fluidce_Domain_Model_Text $text
 	 * @return void
 	 */
 	public function updateTextAction(Tx_Fluidce_Domain_Model_Text $text) {
+		$parsehtml = t3lib_div::makeInstance('t3lib_parsehtml_proc');
+		$parsehtml->init('tt_content:bodytext', $text->getPid());
+
+		$options = array();
+		$options['rte_transform']['parameters']['mode'] = 'ts_css';
+
+		$parsedText = $parsehtml->RTE_transform($text->getText(), $options, 'db');
+		$text->setText($parsedText);
+
 		$this->textRepository->update($text);
+		$this->redirect('list');
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Text $text
+	 * @return void
+	 */
+	public function deleteTextAction(Tx_Fluidce_Domain_Model_Text $text) {
+		$this->textRepository->remove($text);
 		$this->redirect('list');
 	}
 

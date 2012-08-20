@@ -112,4 +112,15 @@ class Tx_Fluidce_Domain_Model_Content extends Tx_Extbase_DomainObject_AbstractEn
 		return $this->colPos;
 	}
 
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Content $after
+	 */
+	public function moveAfter(Tx_Fluidce_Domain_Model_Content $after) {
+		$cmd['tt_content'][$this->getUid()]['move'] = $after->getUid() * -1;
+		$tce = t3lib_div::makeInstance('t3lib_TCEmain');
+		$tce->stripslashes_values = 0;
+		$tce->start(array(), $cmd);
+		$tce->process_cmdmap();
+	}
+
 }
