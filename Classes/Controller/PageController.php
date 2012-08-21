@@ -73,14 +73,6 @@ class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_Act
 	}
 
 	/**
-	 * @return string
-	 */
-	public function listAction() {
-		$pages = $this->pageRepository->findAll();
-		$this->view->assign('pages', $pages);
-	}
-
-	/**
 	 * @param Tx_Fluidce_Domain_Model_Page $page
 	 * @return void
 	 */
@@ -96,6 +88,25 @@ class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_Act
 //			->reset()
 //			->setTargetPageUid($page->getUid())
 //			->build();
+	}
+
+	/**
+	 * @param array $pageUids
+	 */
+	public function	moveAction($pageUids) {
+		$page = $this->pageRepository->findByUid($pageUids['pageUid']);
+		$moveAfterPage = $this->pageRepository->findByUid($pageUids['moveAfterUid']);
+		$page->moveAfter($moveAfterPage);
+		$this->redirectToUri('index.php?id=' . $page->getUid());
+	}
+
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Page $page
+	 * @return string
+	 */
+	public function deleteAction(Tx_Fluidce_Domain_Model_Page $page) {
+		$this->pageRepository->remove($page);
+		//$this->redirectToUri('index.php?id=' . '1');
 	}
 
 }

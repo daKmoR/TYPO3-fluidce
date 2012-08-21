@@ -298,4 +298,15 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		return $this->sorting;
 	}
 
+	/**
+	 * @param Tx_Fluidce_Domain_Model_Page $after
+	 */
+	public function moveAfter(Tx_Fluidce_Domain_Model_Page $after) {
+		$cmd['pages'][$this->getUid()]['move'] = $after->getUid() * -1;
+		$tce = t3lib_div::makeInstance('t3lib_TCEmain');
+		$tce->stripslashes_values = 0;
+		$tce->start(array(), $cmd);
+		$tce->process_cmdmap();
+	}
+
 }

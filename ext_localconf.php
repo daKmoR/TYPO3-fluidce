@@ -8,11 +8,11 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	'Content',
 	array(
 		'Content' => 'list, show, update, move, updateText, deleteText',
-		'Page' => 'list, show, update',
+		'Page' => 'update, move, delete',
 	),
 	// non-cacheable actions
 	array(
-		'Page' => 'update',
+		'Page' => 'update, move, delete',
 		'Content' => 'update, updateText, move, deleteText',
 	)
 );
