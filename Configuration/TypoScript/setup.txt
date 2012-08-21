@@ -29,6 +29,7 @@ plugin.tx_fluidce {
 						nav_title.mapOnProperty = navigationTitle
 						nav_hide.mapOnProperty = hideInMenu
 						title.mapOnProperty = name
+						sorting.mapOnProperty = sorting
 					}
 				}
 			}
@@ -80,3 +81,5 @@ plugin.tx_fluidce {
 		#rewrittenPropertyMapper = 1
 	}
 }
+
+config.tx_extbase.persistence < plugin.tx_fluidce.persistence

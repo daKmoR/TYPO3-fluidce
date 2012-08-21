@@ -54,6 +54,11 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	protected $hideInMenu;
 
 	/**
+	 * @var integer
+	 */
+	protected $sorting;
+
+	/**
 	 * @var Tx_Fluidce_Domain_Model_Page
 	 */
 	protected $parent;
@@ -188,7 +193,22 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $children
 	 */
 	public function getChildren() {
-		return $this->children;
+		$children = $this->children->toArray();
+		usort($children, array('Tx_Fluidce_Domain_Model_Page', 'comparePages'));
+		return $children;
+	}
+
+	/**
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Fluidce_Domain_Model_Page> $children
+	 */
+	public function getNotHideInMenuChildren() {
+		$children = array();
+		foreach($this->getChildren() as $child) {
+			if ($child->getHideInMenu() !== 1) {
+				$children[] = $child;
+			}
+		}
+		return $children;
 	}
 
 	/**
@@ -247,6 +267,35 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		} else {
 			return $this->getContents();
 		}
+	}
+
+	/**
+	 * @static
+	 * @param Tx_Fluidce_Domain_Model_Page $pageA
+	 * @param Tx_Fluidce_Domain_Model_Page $pageB
+	 * @return int
+	 */
+	static function comparePages(Tx_Fluidce_Domain_Model_Page $pageA, Tx_Fluidce_Domain_Model_Page $pageB)	{
+		$pageASorting = strtolower($pageA->getSorting());
+		$pageBSorting = strtolower($pageB->getSorting());
+		if ($pageASorting == $pageBSorting) {
+			return 0;
+		}
+		return ($pageASorting > $pageBSorting) ? +1 : -1;
+	}
+
+	/**
+	 * @param int $sorting
+	 */
+	public function setSorting($sorting) {
+		$this->sorting = $sorting;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getSorting() {
+		return $this->sorting;
 	}
 
 }

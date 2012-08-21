@@ -47,6 +47,32 @@ class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_Act
 	}
 
 	/**
+	 * @var Tx_Extbase_Persistence_Manager
+	 */
+	protected $persistenceManager;
+
+	/**
+	 * @param Tx_Extbase_Persistence_Manager $persistenceManager
+	 * @return void
+	 */
+	public function injectPersistenceManager(Tx_Extbase_Persistence_Manager $persistenceManager) {
+		$this->persistenceManager = $persistenceManager;
+	}
+
+	/**
+	 * @var Tx_Extbase_Service_CacheService
+	 */
+	protected $cacheService;
+
+	/**
+	 * @param Tx_Extbase_Service_CacheService $cacheService
+	 * @return void
+	 */
+	public function injectCacheService(Tx_Extbase_Service_CacheService $cacheService) {
+		$this->cacheService = $cacheService;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function listAction() {
@@ -55,14 +81,21 @@ class Tx_Fluidce_Controller_PageController extends Tx_Extbase_MVC_Controller_Act
 	}
 
 	/**
-	 * action show
-	 *
 	 * @param Tx_Fluidce_Domain_Model_Page $page
 	 * @return void
 	 */
-	public function showAction(Tx_Fluidce_Domain_Model_Page $page) {
-		$this->view->assign('page', $page);
+	public function updateAction(Tx_Fluidce_Domain_Model_Page $page) {
+		$this->pageRepository->update($page);
+		$this->redirectToUri('index.php?id=' . $page->getUid());
+
+//		$this->persistenceManager->persistAll();
+//		$this->cacheService->clearPageCache($page->getUid());
+//
+//		$uriBuilder = $this->controllerContext->getUriBuilder();
+//		$uri = $uriBuilder
+//			->reset()
+//			->setTargetPageUid($page->getUid())
+//			->build();
 	}
 
 }
-?>
