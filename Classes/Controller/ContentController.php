@@ -84,11 +84,15 @@ class Tx_Fluidce_Controller_ContentController extends Tx_Extbase_MVC_Controller_
 
 		$contentsString = '';
 		foreach ($contents as $content) {
-			if ($this->settings[get_class($content)]) {
-				$templatePathAndFilename = $this->settings[get_class($content)];
+			$contentClass = get_class($content);
+			if ($this->settings[$contentClass]) {
+				$templatePathAndFilename = $this->settings[$contentClass];
 				$this->view->setTemplatePathAndFilename($templatePathAndFilename);
 				$this->view->assign('content', $content);
 				$contentsString .= $this->view->render();
+			}
+			if ($contentClass === 'Tx_Fluidce_Domain_Model_Plugin') {
+				$contentsString .= $content->execute();
 			}
 		}
 		return $contentsString;

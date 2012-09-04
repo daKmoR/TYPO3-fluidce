@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Thomas Allmer <thomas.allmer@webteam.at>, WEBTEAM GmbH
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,5 +33,29 @@
  */
 class Tx_Fluidce_Domain_Repository_PageRepository extends Tx_Extbase_Persistence_Repository {
 
+	/**
+	 * Searches name and navigationTitle of the page
+	 *
+	 * @var string $searchWord
+	 * @return array Tree of Pages
+	 */
+	public function findSearchWord($searchWord) {
+		$query = $this->createQuery();
+		$constraints = array();
+
+		$searchWordConstraints = array();
+		$propertiesToSearch = array('name', 'navigationTitle', 'contents.bodytext', 'contents.header');
+		foreach ($propertiesToSearch as $propertyName) {
+			$searchWordConstraints[] = $query->like($propertyName, '%' . $searchWord . '%');
+		}
+		$constraints[] = $query->logicalOr($searchWordConstraints);
+
+		$constraints[] = $query->equals('doktype', 1);
+
+		if (count($constraints) > 0) {
+			$query->matching($query->logicalAnd($constraints));
+		}
+		return $query->execute();
+	}
+
 }
-?>

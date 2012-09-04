@@ -309,4 +309,17 @@ class Tx_Fluidce_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEntit
 		$tce->process_cmdmap();
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getText() {
+		$text = '';
+		foreach($this->getContents() as $content) {
+			if (method_exists($content, 'getText')) {
+				$text .= $content->getText() . ' ';
+			}
+		}
+		return $text;
+	}
+
 }

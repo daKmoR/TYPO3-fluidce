@@ -71,7 +71,7 @@ plugin.tx_fluidce {
 					tableName = tt_content
 					recordType = list
 					columns {
-						bodytext.mapOnProperty = text
+						list_type.mapOnProperty = type
 					}
 				}
 			}

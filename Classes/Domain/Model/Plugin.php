@@ -33,4 +33,65 @@
  */
 class Tx_Fluidce_Domain_Model_Plugin extends Tx_Fluidce_Domain_Model_Content {
 
+	/**
+	 * @var Tx_Extbase_Object_ObjectManagerInterface
+	 */
+	protected $objectManager;
+
+	/**
+	 * @var string
+	 */
+	protected $type;
+
+	/**
+	 * @param Tx_Extbase_Object_ObjectManagerInterface $objectManager
+	 */
+	public function injectObjectManager(Tx_Extbase_Object_ObjectManagerInterface $objectManager) {
+		$this->objectManager = $objectManager;
+	}
+
+	/**
+	 * Executes an extbase extension
+	 *
+	 * @return string
+	 */
+	public function execute() {
+		$bootstrap = $this->objectManager->create('Tx_Extbase_Core_Bootstrap');
+		$configuration = array(
+			'extensionName' => $this->getExtensionName(),
+			'pluginName' => $this->getPluginName()
+		);
+		return $bootstrap->run('', $configuration);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getExtensionName() {
+		$split = explode('_', $this->getType());
+		return t3lib_div::underscoredToUpperCamelCase($split[0]);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPluginName() {
+		$split = explode('_', $this->getType());
+		return t3lib_div::underscoredToUpperCamelCase($split[1]);
+	}
+
+	/**
+	 * @param string $type
+	 */
+	public function setType($type) {
+		$this->type = $type;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getType() {
+		return $this->type;
+	}
+
 }
